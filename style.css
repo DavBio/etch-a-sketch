@@ -1,32 +1,41 @@
+body {
+    background-color: darkgoldenrod;
+}
+
 .header {
     text-align: center;
+    background-color: darkgoldenrod;
+    padding:5px;
+    color: rgb(131, 0, 0);
+    margin: 0px 0% 1em 0%;
 }
 
 .content {
    display:block; 
    margin: 0 auto;
-    
-    padding:10px;
-    
-    
+    background-color: firebrick;
+    padding:4em;
+    border-top-left-radius: 20%;
+    border-top-right-radius: 20%;
+    width: 650px;
 }
 
 button{
     margin:7px;
     font-weight: bold;
-    color:white;
-    background-color: black;
+    color:gold;
+    background-color: firebrick;
     border: 2px solid rgb(00,00,00,0.20);
     border-radius: 10px;
 }
 .gridContainer {
     margin: auto;
     border: 5px solid black;
-    border-radius: 6px;
+    border-radius: 12px;
     width: 500px;
     height: 500px;
     display:grid;
-       
+    background-color: aliceblue;      
 }
 
 .black {
