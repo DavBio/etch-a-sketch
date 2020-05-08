@@ -1,14 +1,14 @@
+
+//Global Constants
 const gridContainer = document.querySelector(".gridContainer");
 const newGridButton = document.querySelector("#newGrid");
 const pixelSizeButton = document.querySelector("#pixelSize");
-    
-
 let columnsArray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
 
 
 
-
-function createBox (boxItem, boxArrayIndex, boxArray) {
+//Declare functions
+let createBox = function  (boxItem, boxArrayIndex, boxArray) {
    
     boxArray[boxArrayIndex] = document.createElement("div");
     boxArray[boxArrayIndex].classList.add("box");
@@ -18,7 +18,7 @@ function createBox (boxItem, boxArrayIndex, boxArray) {
     
 }
 
-function createRows (columnItem,columnArrayIndex,columnArray) {
+let createRows = function  (columnItem,columnArrayIndex,columnArray) {
 
     columnArray[columnArrayIndex] = []
     for (i = 0; i < columnArray.length  ; i++) {
@@ -28,18 +28,6 @@ function createRows (columnItem,columnArrayIndex,columnArray) {
    
     
 }
-   
-let gridColumnsString = "auto ";
-for (i = 1; i < columnsArray.length ; i++) {
-    gridColumnsString += "auto "
-}
-
-columnsArray.forEach(createRows);
-gridContainer.style.cssText = `grid-template-columns: ${gridColumnsString}; `;
-
-
-
-let boxes = document.querySelectorAll(".box");
 
 
 
@@ -51,8 +39,6 @@ function blackChange () {
     });
 }
 
-blackChange();
-
 function newGridChange() {
     boxes.forEach((div) => {
         div.classList.remove("black")       
@@ -60,15 +46,28 @@ function newGridChange() {
 
 }
 
-
-function setPixelSize () {
-    let pixelSize = prompt("Set Pixel Size", "16"); 
+let deleteGridChilds = function (){ 
     for( i = 0; i <= (columnsArray.length)*(columnsArray.length); i++){
         if (gridContainer.firstChild === null) {break;} else {
             gridContainer.firstChild.remove();
         }
     }    
-         if (pixelSize === null || Number(pixelSize) === NaN || pixelSize === "") {
+}   
+
+let makeGridColumns = function () {
+    let gridColumnsString = "auto ";
+    for (i = 1; i < columnsArray.length ; i++) {
+         gridColumnsString += "auto ";
+    }
+    gridContainer.style.cssText = `grid-template-columns: ${gridColumnsString}; `;
+}
+
+
+function setPixelSize () {
+    let pixelSize = prompt("Set Pixel Size", "16"); 
+ deleteGridChilds ();
+
+        if (pixelSize === null || Number(pixelSize) === NaN || pixelSize === "") {
              alert("Canceled");
          } else if (Number(pixelSize) < columnsArray.length) {
          
@@ -80,16 +79,20 @@ function setPixelSize () {
          } 
      }
  
-     let gridColumnsString = "auto ";
-     for (i = 1; i < columnsArray.length ; i++) {
-         gridColumnsString += "auto ";
-     }
+    makeGridColumns (); 
      columnsArray.forEach(createRows);
-     gridContainer.style.cssText = `grid-template-columns: ${gridColumnsString}; `;
-     
      boxes = document.querySelectorAll(".box");
+     
      blackChange();
  }
+
+//Create default grid options
+columnsArray.forEach(createRows);
+let boxes = document.querySelectorAll(".box");
+makeGridColumns();
+blackChange();
+
+
+//Adding functions to buttons
  pixelSizeButton.addEventListener("click",() => setPixelSize());
- 
-newGridButton.addEventListener('click', () => newGridChange());
+ newGridButton.addEventListener('click', () => newGridChange());
