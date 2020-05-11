@@ -36,12 +36,18 @@ let createRows = function  (columnItem,columnArrayIndex,columnArray) {
 
 function blackChange () {
     boxes.forEach((div) => {
+        div.classList.add("white");
+        console.log("ok1");
+    });
+    
+    boxes.forEach((div) => {
         div.addEventListener("mouseover",(e) => {
             div.classList.add("black");
             div.classList.remove("white");
             div.classList.remove("rainbow");
             });
     });
+    
 }
 
 function rainbowModeChange () {

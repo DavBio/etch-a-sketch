@@ -10,6 +10,9 @@ body {
     margin: 0px 0% 1em 0%;
 }
 
+h1 {
+ font-size: 3.5em;
+}
 .content {
    display:block; 
    margin: 0 auto;
